@@ -2,16 +2,15 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
                                    "http://www.hibernate.org/dtd/hibernate-mapping">
 <hibernate-mapping>
- <class entity-name="cit360.team1.model.Deck"
-  name="cit360.team1.model.Deck" table="deck">
+ <class entity-name="cit360.team1.flashcardsserver.model.Deck" name="cit360.team1.flashcardsserver.model.Deck" table="deck">
   <id column="deck_id" name="DeckId" type="int">
-   <generator class="increment"/>
+   	<generator class="increment"/>
   </id>
   <property column="deck_name" generated="never" lazy="false"
    name="DeckName" type="string"/>
   <set cascade="all" lazy="false" name="cards" sort="unsorted">
    <key column="deck_id"/>
-   <one-to-many class="cit360.team1.model.Card"/>
+   <one-to-many class="cit360.team1.flashcardsserver.model.Card"/>
   </set>
  </class>
 </hibernate-mapping>
