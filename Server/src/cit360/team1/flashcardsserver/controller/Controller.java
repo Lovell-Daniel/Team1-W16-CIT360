@@ -23,7 +23,7 @@ public class Controller implements Runnable {
 			//send that server is ready
 			toClient.println("ready");
 			String status = fromClient.readLine();
-			if (status == "ready") {
+			if (status.startsWith("ready")) {
 				//wait for ready
 				System.out.println("Client Ready");
 				String jsonStr = fromClient.readLine();

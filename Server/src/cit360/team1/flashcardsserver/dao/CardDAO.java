@@ -9,7 +9,6 @@ import org.hibernate.criterion.Order;
 
 import cit360.team1.flashcardsserver.FlashcardsServer;
 import cit360.team1.flashcardsserver.model.Card;
-import cit360.team1.flashcardsserver.model.Deck;
 
 public class CardDAO{
 	
