@@ -1,11 +1,19 @@
-package cit360.team1.model;
+package cit360.team1.flashcardsserver.model;
 
 import java.util.ArrayList;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
+@Entity
 public class Deck {
 	
+	@Id
+	@GeneratedValue
 	private int deckId;
 	private String deckName;
+	@OneToMany
 	private ArrayList<Card> cards;
 	
 	public int getDeckId() {

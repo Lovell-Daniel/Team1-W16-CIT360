@@ -1,7 +1,14 @@
-package cit360.team1.model;
+package cit360.team1.flashcardsserver.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Card {
 
+	@Id
+	@GeneratedValue
 	private int cardId;
 	private int deckId;
 	private String sideOne;

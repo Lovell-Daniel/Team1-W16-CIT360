@@ -1,8 +1,8 @@
-package cit360.team1.controller;
+package cit360.team1.fashcardsserver.controller;
 
 import org.json.JSONObject;
 
-import cit360.team1.model.Deck;
+import cit360.team1.flashcardsserver.model.Deck;
 
 public class EditDeckHandler extends Handler {
 

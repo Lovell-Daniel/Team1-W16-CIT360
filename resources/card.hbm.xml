@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping">
+<hibernate-mapping>
+ <class entity-name="cit360.team1.model.Card" name="cit360.team1.model.Card" table="card">
+  <id column="card_id" name="CardId" type="int">
+   <generator class="increment"/>
+  </id>
+  <property column="card_id" generated="never" lazy="false"
+   name="CardId" type="int"/>
+  <property column="deck_id" generated="never" lazy="false"
+   name="DeckId" type="int"/>
+  <property column="side_one" generated="never" lazy="false"
+   name="SideOne" type="string"/>
+  <property column="side_two" generated="never" lazy="false"
+   name="SideTwo" type="string"/>
+  <property column="read_flg" generated="never" lazy="false"
+   name="ReadFlag" type="boolean"/>
+ </class>
+</hibernate-mapping>

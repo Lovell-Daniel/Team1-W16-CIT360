@@ -1,4 +1,4 @@
-package cit360.team1.controller;
+package cit360.team1.fashcardsserver.controller;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
