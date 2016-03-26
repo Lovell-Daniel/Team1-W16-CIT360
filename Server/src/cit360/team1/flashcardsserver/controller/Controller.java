@@ -23,11 +23,19 @@ public class Controller implements Runnable {
 			//send that server is ready
 			toClient.println("ready");
 			String status = fromClient.readLine();
+			//look for ready from the client
 			if (status.startsWith("ready")) {
-				//wait for ready
 				System.out.println("Client Ready");
+				//look for a JSON string from client
 				String jsonStr = fromClient.readLine();
+				//convert JSON string into JSONObject
 				JSONObject jsonObj = new JSONObject(jsonStr);
+				//all objects should contain two keys: request and data
+				//request is a string that maps to a handler in HandlerMap
+				//data is JSONObject that is forwarded to the requested handler
+				//samples:
+				//{'request':'createDeck','data':{'deckName':'Addition'}}
+				//{'request':'createCard','data':{'deckName':'Addition','sideOne':'1+1','sideTwo':'2'}}
 				String request = jsonObj.getString("request");
 				JSONObject data = jsonObj.getJSONObject("data");
 				
