@@ -1,20 +1,24 @@
 package cit360.team1.flashcardsserver.model;
 
-import java.util.ArrayList;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="deck")
 public class Deck {
-	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int deckId;
 	private String deckName;
-	@OneToMany
-	private ArrayList<Card> cards;
+	private Set<Card> cards;
 	
 	public int getDeckId() {
 		return deckId;
@@ -28,15 +32,18 @@ public class Deck {
 	public void setDeckName(String deckName) {
 		this.deckName = deckName;
 	}
-	public ArrayList<Card> getCards() {
-		return cards;
-	}
-	public void setCards(ArrayList<Card> cards) {
-		this.cards = cards;
+	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL, mappedBy = "card")
+	public Set<Card> getCards() {
+		return this.cards;
 	}
 	
-	public Deck() {
-		
+	public void setCards(Set<Card> cards) {
+		this.cards = cards;
+	}
+
+	@Override
+	public String toString() {
+		return "Deck [deckId=" + deckId + ", deckName=" + deckName + ", cards=" + cards + "]";
 	}
 	@Override
 	public int hashCode() {
@@ -70,9 +77,4 @@ public class Deck {
 			return false;
 		return true;
 	}
-	@Override
-	public String toString() {
-		return "Deck [deckId=" + deckId + ", deckName=" + deckName + ", cards=" + cards + "]";
-	}
-	
 }

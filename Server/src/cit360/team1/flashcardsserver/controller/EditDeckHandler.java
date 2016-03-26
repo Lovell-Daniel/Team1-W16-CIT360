@@ -1,4 +1,4 @@
-package cit360.team1.fashcardsserver.controller;
+package cit360.team1.flashcardsserver.controller;
 
 import org.json.JSONObject;
 
