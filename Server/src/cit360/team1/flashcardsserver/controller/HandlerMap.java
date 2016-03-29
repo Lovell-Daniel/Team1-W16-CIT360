@@ -16,6 +16,7 @@ public class HandlerMap {
 		//populate the map with messages for the server
 		map.put("createDeck", new CreateDeckHandler());
 		map.put("editDeck", new EditDeckHandler());
+		map.put("getDecks", new GetDecksHandler());
 	}
 
 	public Handler getHandler(String request) {

@@ -8,7 +8,7 @@ import cit360.team1.flashcardsserver.model.Deck;
 public class CreateDeckHandler extends Handler {
 
 	@Override
-	String handleIt(JSONObject data) throws Exception {
+	String handleIt(JSONObject data) {
 				
 		//Create deck 
 		Deck deck = new Deck();
@@ -16,10 +16,17 @@ public class CreateDeckHandler extends Handler {
 		
 		//use deck to persist in database
 		DeckDAO deckDao = new DeckDAO();
-		deckDao.createDeck(deck);
+		try {
+			deckDao.createDeck(deck);
+			return "TRUE";
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return e.getMessage();
+		}
 		
 		
-		return "";
 	}
 
 }
