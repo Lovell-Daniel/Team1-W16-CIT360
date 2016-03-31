@@ -11,6 +11,10 @@ public class Deck {
 	private String deckName;
 	private Set<Card> cards;
 	
+	public Deck(){
+		
+	}
+	
 	public int getDeckId() {
 		return deckId;
 	}

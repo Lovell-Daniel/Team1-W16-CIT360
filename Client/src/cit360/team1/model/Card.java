@@ -10,7 +10,10 @@ public class Card {
 	private String sideTwo;
 	private Boolean readFlag;
 	
-
+	public Card(){
+		
+	}
+	
 	public int getCardId() {
 		return cardId;
 	}
