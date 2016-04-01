@@ -19,6 +19,7 @@ public class HomeView extends javax.swing.JFrame {
 	//test arrayList
 	private ArrayList<String> testList = new ArrayList<>();
 	private String[] testArray;
+	private String[] boxArray;
 	
 	// Declare component variables
 	private JLabel appTitleLabel = new JLabel("Flashcard App");
@@ -76,6 +77,14 @@ public class HomeView extends javax.swing.JFrame {
 	
 	public String getDeckName(){
 		return deckNameText.getText();
+	}
+	
+	public void setBoxModel(ArrayList<String> decks){
+		boxArray = decks.toArray(new String[testList.size()]);
+		
+		// set combo box data
+		boxModel = new DefaultComboBoxModel(boxArray);
+		deckSelectComboBox.setModel(boxModel);
 	}
 	
 	public void addNewDeckListener(ActionListener listenForNewDeck) {
