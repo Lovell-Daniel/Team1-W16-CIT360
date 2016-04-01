@@ -14,6 +14,7 @@
   <property name="hibernate.connection.password">mtgcbyteam1</property>
   <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
   <property name="hibernate.packagesToScan">cit360.team1.flashcardsserver.model</property>
+  <!-- Names the annotated entity class -->
   <mapping resource="deck.hbm.xml"/>
   <mapping resource="card.hbm.xml"/>
  </session-factory>

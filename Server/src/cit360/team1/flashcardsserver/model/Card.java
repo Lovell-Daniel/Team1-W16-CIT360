@@ -2,84 +2,82 @@ package cit360.team1.flashcardsserver.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Table;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
-@Entity
-@Table(name="card")
 public class Card {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int cardId;
-	private int deckId;
-	private String cardTitle;
-	private String sideOne;
-	private String sideTwo;
-	private Boolean readFlag;
+	private int card_id;
 	
-	@Column (name="card_id")
+	@ManyToOne(fetch=FetchType.EAGER, targetEntity = Deck.class)
+	private int deck_id;
+	private String card_title;
+	private String side_one;
+	private String side_two;
+	private Boolean read_flg;
+	
+	
 	public int getCardId() {
-		return cardId;
+		return card_id;
 	}
 	public void setCardId(int cardId) {
-		this.cardId = cardId;
+		this.card_id = cardId;
 	}
-	@ManyToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name="deck_id", nullable=false)
+
 	public int getDeckId() {
-		return deckId;
+		return deck_id;
 	}
 	public void setDeckId(int deckId) {
-		this.deckId = deckId;
+		this.deck_id = deckId;
 	}
-	@Column (name="card_title")
+	
 	public String getCardTitle() {
-		return cardTitle;
+		return card_title;
 	}
 	public void setCardTitle(String cardTitle) {
-		this.cardTitle = cardTitle;
+		this.card_title = cardTitle;
 	}
-	@Column (name="side_one")
+	
 	public String getSideOne() {
-		return sideOne;
+		return side_one;
 	}
 	public void setSideOne(String sideOne) {
-		this.sideOne = sideOne;
+		this.side_one = sideOne;
 	}
-	@Column (name="side_two")
+	
 	public String getSideTwo() {
-		return sideTwo;
+		return side_two;
 	}
 	public void setSideTwo(String sideTwo) {
-		this.sideTwo = sideTwo;
+		this.side_two = sideTwo;
 	}
-	@Column (name="read_flg")
+	
 	public Boolean getReadFlag(){
-		return this.readFlag;
+		return this.read_flg;
 	}
 	public void setReadFlag(Boolean readFlag){
-		this.readFlag = readFlag;
+		this.read_flg = readFlag;
 	}
 	@Override
 	public String toString() {
-		return "Card [cardId=" + cardId + ", deckId=" + deckId + ", cardTitle=" + cardTitle + ", sideOne=" + sideOne
-				+ ", sideTwo=" + sideTwo + ", readFlag=" + readFlag + "]";
+		return "Card [card_id=" + card_id + ", deck_id=" + deck_id + ", card_title=" + card_title + ", side_one="
+				+ side_one + ", side_two=" + side_two + ", read_flg=" + read_flg + "]";
 	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + cardId;
-		result = prime * result + ((cardTitle == null) ? 0 : cardTitle.hashCode());
-		result = prime * result + deckId;
-		result = prime * result + ((readFlag == null) ? 0 : readFlag.hashCode());
-		result = prime * result + ((sideOne == null) ? 0 : sideOne.hashCode());
-		result = prime * result + ((sideTwo == null) ? 0 : sideTwo.hashCode());
+		result = prime * result + card_id;
+		result = prime * result + ((card_title == null) ? 0 : card_title.hashCode());
+		result = prime * result + deck_id;
+		result = prime * result + ((read_flg == null) ? 0 : read_flg.hashCode());
+		result = prime * result + ((side_one == null) ? 0 : side_one.hashCode());
+		result = prime * result + ((side_two == null) ? 0 : side_two.hashCode());
 		return result;
 	}
 	@Override
@@ -91,30 +89,32 @@ public class Card {
 		if (getClass() != obj.getClass())
 			return false;
 		Card other = (Card) obj;
-		if (cardId != other.cardId)
+		if (card_id != other.card_id)
 			return false;
-		if (cardTitle == null) {
-			if (other.cardTitle != null)
+		if (card_title == null) {
+			if (other.card_title != null)
 				return false;
-		} else if (!cardTitle.equals(other.cardTitle))
+		} else if (!card_title.equals(other.card_title))
 			return false;
-		if (deckId != other.deckId)
+		if (deck_id != other.deck_id)
 			return false;
-		if (readFlag == null) {
-			if (other.readFlag != null)
+		if (read_flg == null) {
+			if (other.read_flg != null)
 				return false;
-		} else if (!readFlag.equals(other.readFlag))
+		} else if (!read_flg.equals(other.read_flg))
 			return false;
-		if (sideOne == null) {
-			if (other.sideOne != null)
+		if (side_one == null) {
+			if (other.side_one != null)
 				return false;
-		} else if (!sideOne.equals(other.sideOne))
+		} else if (!side_one.equals(other.side_one))
 			return false;
-		if (sideTwo == null) {
-			if (other.sideTwo != null)
+		if (side_two == null) {
+			if (other.side_two != null)
 				return false;
-		} else if (!sideTwo.equals(other.sideTwo))
+		} else if (!side_two.equals(other.side_two))
 			return false;
 		return true;
 	}
+	
+	
 }

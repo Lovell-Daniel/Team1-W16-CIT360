@@ -9,8 +9,8 @@
   <property column="deck_name" generated="never" lazy="false"
    name="DeckName" type="string"/>
   <set cascade="all" lazy="false" name="cards" sort="unsorted">
-   <key column="deck_id"/>
-   <one-to-many class="cit360.team1.flashcardsserver.model.Card"/>
+   	<key column="deck_id"/>
+   	<one-to-many class="cit360.team1.flashcardsserver.model.Card"/>
   </set>
  </class>
 </hibernate-mapping>

@@ -74,7 +74,7 @@ public class DeckDAO{
 		
 		//Collections.checkedList ensures that only objects of type Deck.class are added to the generic List.
 		@SuppressWarnings("unchecked")
-		List<Deck> decks = Collections.checkedList(session.createCriteria(Deck.class).addOrder(Order.asc("deckId")).list(), Deck.class);
+		List<Deck> decks = Collections.checkedList(session.createCriteria(Deck.class).addOrder(Order.asc("DeckId")).list(), Deck.class);
 
 		return decks;
 	}
