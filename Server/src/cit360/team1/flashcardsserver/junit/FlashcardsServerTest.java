@@ -1,4 +1,4 @@
-package cit360.team1.flashcardsserver.junit;
+/*package cit360.team1.flashcardsserver.junit;
 
 
 import static org.junit.Assert.*;
@@ -49,3 +49,4 @@ public class FlashcardsServerTest {
 	}
 
 }
+*/

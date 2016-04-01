@@ -38,7 +38,7 @@ public class Controller implements Runnable {
 				//{'request':'createCard','data':{'deckName':'Addition','sideOne':'1+1','sideTwo':'2'}}
 				String request = jsonObj.getString("request");
 				JSONObject data = jsonObj.getJSONObject("data");
-				
+				System.out.println(request);
 				//handle the request
 				ApplicationController appController = new ApplicationController();
 				String result = appController.handleRequest(request, data);

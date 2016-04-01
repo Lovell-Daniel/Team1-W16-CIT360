@@ -2,10 +2,19 @@ package cit360.team1.view;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.swing.*;
 import javax.swing.border.*;
+
+import org.json.JSONArray;
 
 import cit360.team1.model.Deck;
 
@@ -31,12 +40,49 @@ public class HomeView extends javax.swing.JFrame {
 	private JLabel statusBarLabel = new JLabel("Status: ");
 	
 	public HomeView(){
-		// test data
-		testList.add("Deck 1");
-		testList.add("Deck 2");
-		testList.add("Deck 3");
 		
-		testArray = testList.toArray(new String[testList.size()]);
+		
+		String hostname = "127.0.0.1";
+		int port = 4499;
+		String s = "{'request':'getDecks','data':{}}";
+
+		try (
+				Socket sock = new Socket(hostname, port);
+				BufferedReader fromServer = new BufferedReader(new InputStreamReader(sock.getInputStream()));
+				PrintWriter toServer = new PrintWriter(sock.getOutputStream(), true);
+				//PrintWriter toServer = new PrintWriter(new OutputStreamWriter(sock.getOutputStream()));
+			) {
+			
+			if (fromServer.readLine().startsWith("ready")) {
+				toServer.println("ready");
+				toServer.println(s);
+				
+				JSONArray jsonArray = new JSONArray(fromServer.readLine());
+				Iterator iter = jsonArray.iterator();
+				testArray = new String[jsonArray.length()];
+				int counter = 0;
+				while (iter.hasNext()) {
+					testArray[counter] = (String) iter.next();
+					
+					counter++;
+				}
+			}
+			
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		
+		
+		// test data
+		//testList.add("Deck 1");
+		//testList.add("Deck 2");
+		//testList.add("Deck 3");
+		
+		//testArray = testList.toArray(new String[testList.size()]);
 		
 		// set combo box data
 		boxModel = new DefaultComboBoxModel(testArray);
