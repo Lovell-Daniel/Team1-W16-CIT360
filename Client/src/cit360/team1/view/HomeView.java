@@ -74,6 +74,10 @@ public class HomeView extends javax.swing.JFrame {
 		this.setLocationRelativeTo(null);
 	}
 	
+	public String getDeckName(){
+		return deckNameText.getText();
+	}
+	
 	public void addNewDeckListener(ActionListener listenForNewDeck) {
 		newDeckButton.addActionListener(listenForNewDeck);
 	}
