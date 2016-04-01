@@ -15,8 +15,6 @@ public class HomeView extends javax.swing.JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
-	private Deck theDeck;
 	
 	//test arrayList
 	private ArrayList<String> testList = new ArrayList<>();
